@@ -1,0 +1,10 @@
+== REST: you must already know the endpoint ==
+(200, {'city': 'Kolkata', 'temp_c': 31})
+(404, {'error': "unknown city 'delhi'"})
+
+== MCP: ask the server what it can do ==
+TOOL get_forecast | Get today's temperature in Celsius for a city. Known cities: Kolkata, Mumbai.
+  inputSchema: {"type": "object", "properties": {"city": {"title": "City", "type": "string"}}, "required": ["city"], "title": "get_forecastArguments"}
+CALL ok  -> False Kolkata: 31 C
+Tool 'get_forecast' failed: "Error executing tool get_forecast: Unknown city 'Delhi'. Try Kolkata or Mumbai."
+CALL bad -> True Error executing tool get_forecast: Unknown city 'Delhi'. Try Kolkata or Mumbai.

@@ -1,0 +1,13 @@
+2026-11-03 14:49:07,370 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+TOOLS ['get_addon_status', 'disable_telemetry', 'get_scene_info', 'execute_blender_code', 'record_trajectory_feedback', 'look', 'generate_3d', 'search_assets', 'import_asset']
+
+get_scene_info (isError=False)
+Scene 'Scene' | 1 camera, 1 light, 1 mesh | active Cube | selected Cube | mode OBJECT
+
+Showing 3 of 3 (name | type | location | size | hidden | children):
+Cube | mesh | at (0.0, 0.0, 0.0) | size 2.0x2.0x2.0
+Light | light | at (4.08, 1.01, 5.9)
+Camera | camera | at (7.36, -6.93, 4.96)
+
+execute_blender_code (isError=False)
+Code executed successfully: cube added
