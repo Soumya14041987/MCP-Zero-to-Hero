@@ -1,0 +1,39 @@
+# Run on 2026-11-07 | Python 3.13.18 | numpy 2.5.3 | 4 CPU cores, no GPU
+=== 00_agent_loop.py
+inference call 1: reads  114 tokens, writes  4 tokens
+inference call 2: reads  162 tokens, writes  4 tokens
+inference call 3: reads  208 tokens, writes  3 tokens
+inference call 4: reads  285 tokens, writes  8 tokens
+=== 01_generation_loop.py
+generated: [5, 17, 42, 29, 50, 79, 79, 79]
+forward passes: 5, tokens re-processed in total: 25
+=== 02_kv_cache.py
+identical output: True
+no cache :  24950 token-passes, 1.17s
+KV cache :    299 token-passes, 0.02s
+=== 03_kv_memory.py
+GQA : 128 KiB per token   MHA: 512 KiB per token
+agent context  concurrent agents  GQA GiB   MHA GiB
+         8192                 1      1.0       4.0
+         8192                16     16.0      64.0
+        32768                16     64.0     256.0
+       131072                 4     64.0     256.0
+=== 04_prefill_vs_decode.py
+rows(tokens)  ms/call  ms per token  FLOPs per weight byte
+          1     0.68       0.6773          0.5
+          8     2.89       0.3606          4.0
+         64     7.97       0.1246         32.0
+        512    41.77       0.0816        256.0
+1 token costs 0.74 ms; the weights are read once per call either way.
+=== 05_paged_blocks.py
+tokens actually used : 639844
+slab reserved        : 4096000  -> 84.4% wasted
+paged reserved       : 647056  -> 1.1% wasted
+same GPU memory fits 6.3x more concurrent requests with paging
+=== 06_speculative.py
+target   : [0.55 0.25 0.15 0.05]
+spec out : [0.551 0.248 0.15  0.051]
+draft tokens accepted: 79.8%
+=== 07_agent_prefix_cache.py
+prompt tokens sent over 12 steps : 50700
+prefilled fresh with prefix caching   : 2300  (5% of the work)
