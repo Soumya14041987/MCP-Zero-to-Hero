@@ -17,6 +17,8 @@ Episodes
 | Ep6 | Build your first MCP server in Python | https://www.youtube.com/watch?v=RGryq0Zt9og | [Ep6-build-first-mcp-server-python](Ep6-build-first-mcp-server-python/notes.md) |
 | Ep7 | Connect any MCP server to Claude, Copilot, Cursor | https://www.youtube.com/watch?v=OA19pBHJUMg | [Ep7-connect-mcp-to-claude-copilot-cursor](Ep7-connect-mcp-to-claude-copilot-cursor/notes.md) |
 
+MCP security (code and notes, video link added after upload): [MCP-Security](MCP-Security/notes.md)
+
 Episode numbers follow the playlist publish order. More episodes will be added as the series continues.
 
 Quick command cheat sheet

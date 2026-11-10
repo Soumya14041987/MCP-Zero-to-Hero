@@ -1,0 +1,13 @@
+// EXAMPLE ONLY. Not run against a real AgentCore Gateway. Action and resource names are placeholders.
+// Default is deny, so only rules like these allow anything.
+permit (
+  principal,
+  action == Action::"read_logs",
+  resource
+);
+
+permit (
+  principal,
+  action == Action::"restart_pod",
+  resource
+) when { principal.getTag("role") == "on-call" };

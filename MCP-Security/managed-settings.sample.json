@@ -1,0 +1,10 @@
+{
+  "allowedMcpServers": [
+    { "serverName": "logs-readonly" },
+    { "serverName": "pod-ops" }
+  ],
+  "deniedMcpServers": [
+    { "serverName": "unreviewed-*" }
+  ],
+  "allowManagedMcpServersOnly": true
+}

@@ -1,0 +1,7 @@
+approved 2 tools
+PASS (2 tools match the approved pins)
+CHANGED tool definition: read_logs
+FAIL
+test ok: change was caught
+Python 3.14.6
+json valid
