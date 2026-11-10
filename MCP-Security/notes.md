@@ -13,6 +13,7 @@ Channel: https://www.youtube.com/@soumyadipchatterjee2267
 | test.sh | Runs tool_pin.py on the two sample files | Yes |
 | tools_v1.json | Sample tools/list result with 2 tools | Yes |
 | tools_v2_changed.json | Same tools, with one sentence added to the read_logs description | Yes |
+| tools_v3_duplicate.json | Two tools with the same name, to show duplicates are rejected | Yes |
 | run-output.txt | The real output of test.sh | Yes |
 | managed-settings.sample.json | Sample Claude Code managed MCP settings | JSON is valid, behaviour not tested |
 | agentcore-policy.cedar.example | Example Cedar policy idea for AgentCore Gateway | Example only, not run |
@@ -72,6 +73,9 @@ PASS (2 tools match the approved pins)
 CHANGED tool definition: read_logs
 FAIL
 test ok: change was caught
+DUPLICATE tool name(s): read_logs
+FAIL
+test ok: duplicate tool name was rejected
 ```
 
 Use it on your own server:
@@ -80,6 +84,8 @@ Use it on your own server:
 python3 tool_pin.py approve my-tools.json pins.json   # when you approve the server
 python3 tool_pin.py check my-tools.json pins.json     # before every run, exit code 1 on any change
 ```
+
+It also refuses a tools list where two tools share a name, because a second definition could hide behind an approved name.
 
 Limits: it checks files you give it, not a live server, and it cannot tell whether a change is harmful, only that something changed.
 

@@ -20,8 +20,17 @@ def fingerprint(tool):
 
 
 def load_tools(path):
+    """Return {name: hash}. Exits with an error if two tools share a name: a dict would keep only the last one,
+    so a second definition could hide behind an approved name."""
     with open(path) as f:
-        return {t["name"]: fingerprint(t) for t in json.load(f)["tools"]}
+        tools = json.load(f)["tools"]
+    names = [t["name"] for t in tools]
+    dups = sorted({n for n in names if names.count(n) > 1})
+    if dups:
+        print("DUPLICATE tool name(s): " + ", ".join(dups))
+        print("FAIL")
+        sys.exit(1)
+    return {t["name"]: fingerprint(t) for t in tools}
 
 
 def main(argv):

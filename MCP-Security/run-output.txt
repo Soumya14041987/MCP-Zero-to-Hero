@@ -3,5 +3,7 @@ PASS (2 tools match the approved pins)
 CHANGED tool definition: read_logs
 FAIL
 test ok: change was caught
+DUPLICATE tool name(s): read_logs
+FAIL
+test ok: duplicate tool name was rejected
 Python 3.14.6
-json valid
